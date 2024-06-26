@@ -1,18 +1,31 @@
 # from django.contrib.auth import login, logout
 # from .forms import RegistrationForm, LoginForm, ReceiptForm, CategoryForm, RecipeSearchForm
+from .forms import CategoryForm
 # from django.shortcuts import render, redirect, get_object_or_404
-# from .models import Receipt
-#
+from django.shortcuts import render, redirect
+from .models import Receipt
+
 # import logging
 #
 # logger = logging.getLogger(__name__)
 
 
-# Create your views here.
-# def main(request):
-#     recent_receipts = Receipt.objects.all().order_by('-id')[:5]
-#     logger.info('Main page accessed')
-#     return render(request, "food/main.html", {'recent_receipts': recent_receipts})
+def main(request):
+    recent_receipts = Receipt.objects.all().order_by('-id')[:5]
+    # logger.info('Main page accessed')
+    return render(request, "drink/main.html", {'recent_receipts': recent_receipts})
+
+
+def create_category(request):
+    if request.method == 'POST':
+        form = CategoryForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            # logger.info('new category created')
+            return redirect('main')
+    else:
+        form = CategoryForm()
+    return render(request, 'drink/create_category.html', {'form': form})
 #
 #
 # def authorization(request):
@@ -100,13 +113,4 @@
 #     return render(request, 'food/receipt_detail.html', {'receipt': receipt})
 #
 #
-# def create_category(request):
-#     if request.method == 'POST':
-#         form = CategoryForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             form.save()
-#             logger.info('new category created')
-#             return redirect('main')
-#     else:
-#         form = CategoryForm()
-#     return render(request, 'food/create_category.html', {'form': form})
+
