@@ -1,10 +1,12 @@
-from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
-from django import forms
-from django.utils.translation import gettext_lazy as _
 # from django.contrib.auth.forms import AuthenticationForm
 # from django.contrib.auth.models import User
 # from .models import Receipt, Category
+
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm, \
+    UserChangeForm
+from django import forms
+from django.utils.translation import gettext_lazy as _
 
 User = get_user_model()
 
@@ -21,12 +23,42 @@ class UserCreationForm(UserCreationForm):
         fields = ("username", "email")
 
 
-class RegistrationForm(UserCreationForm):
-    email = forms.EmailField()
-
+class UserRegistrationForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = (
+            "first_name",
+            "last_name",
+            "username",
+            "email",
+            "password1",
+            "password2",
+        )
+
+    first_name = forms.CharField()
+    last_name = forms.CharField()
+    username = forms.CharField()
+    email = forms.CharField()
+    password1 = forms.CharField()
+    password2 = forms.CharField()
+
+
+class ProfileForm(UserChangeForm):
+    class Meta:
+        model = User
+        fields = (
+            "image",
+            "first_name",
+            "last_name",
+            "username",
+            "email",)
+
+    image = forms.ImageField(required=False)
+    first_name = forms.CharField()
+    last_name = forms.CharField()
+    username = forms.CharField()
+    email = forms.CharField()
+
 
 
 # class LoginForm(AuthenticationForm):
@@ -35,25 +67,3 @@ class RegistrationForm(UserCreationForm):
 #         fields = ['username', 'password']
 #
 #
-# class ReceiptForm(forms.ModelForm):
-#     class Meta:
-#         model = Receipt
-#         fields = ['name', 'category', 'description', 'steps', 'time', 'photo']
-#
-#
-#
-# class CategoryForm(forms.ModelForm):
-#     class Meta:
-#         model = Category
-#         fields = ['name', 'description', 'photo']
-#
-#     def clean_name(self):
-#         name = self.cleaned_data.get('name')
-#         name_lower = name.lower()
-#         if Category.objects.filter(name__iexact=name_lower).exists():
-#             raise forms.ValidationError("This category name already exists.")
-#         return name
-#
-#
-# class RecipeSearchForm(forms.Form):
-#     search_query = forms.CharField(label='Search', max_length=100)
