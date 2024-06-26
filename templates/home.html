@@ -7,6 +7,15 @@
         <button type="submit">Log out</button>        
     {% else %}
     	<a href="{% url 'login' %}">Login</a> | 
-        <a href="{% url 'register' %}">Register</a>
+        <a href="{% url 'register' %}">Register</a>        
     {% endif %} 
+    
+    <h2>Recent recipes:</h2>
+    <ul>
+        {% for receipt in recent_receipts %}
+            <li><a href="{% url 'receipt_detail' receipt.pk %}">{{ receipt.name }}</a> - {{ receipt.time }} minutes</li>
+        {% endfor %}
+    </ul>
+<img src="https://images.pexels.com/photos/2814828/pexels-photo-2814828.jpeg" alt="Various products" style="width: 600px">
+<p>This is the main page of our food library. Here your can study different recipes and share yours!</p>
 {% endblock %}
