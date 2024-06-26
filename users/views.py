@@ -36,3 +36,11 @@ class Register(View):
 
 class CustomPasswordResetDoneView(PasswordResetDoneView):
     template_name = 'registration/custom_password_reset_done.html'
+
+
+# from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView
+#
+# class CustomPasswordResetView(PasswordResetView):
+#     template_name = 'registration/password_reset_form.html'
+#     email_template_name = 'registration/password_reset_email.html'
+#     subject_template_name = 'registration/password_reset_subject.txt'
