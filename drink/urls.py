@@ -4,7 +4,7 @@ from . import views
 # from users.views import Register
 
 urlpatterns = [
-    # path('', views.main, name='main'),
+    path('', views.main, name='main'),
     path('create_category/', views.create_category, name='create_category'),
 
 ]
