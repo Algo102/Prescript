@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Recipe details{% endblock %}
 {% block content %}
 <h1>{{ receipt.name }}</h1>
@@ -10,20 +10,9 @@
     <p><strong>Author name:</strong> {{ receipt.author }}  </p>
 
     
-    <img src="{% static 'receipt_photos/mohito_7wn42YG.jpg' %}" alt="Мохито">
-    <img src="{{ receipt.photo.url }}" alt="Мохито">
-
-    {% if receipt.photo %}
-        <img src="{{ receipt.photo.url }}" alt="{{ receipt.name }}">
-    {% endif %}
+   
     
-    {% if receipt.photo %}
-    <p>Photo URL: {{ receipt.photo.url }}</p>
-        <img src="{{ receipt.photo.url }}" alt="{{ receipt.name }}">
-    {% endif %}
-    
-    {% if receipt.photo %}
-        <p>Photo URL: {{ receipt.photo.url }}</p>
+    {% if receipt.photo %}        
         <img src="{{ receipt.photo.url }}" alt="{{ receipt.name }}">
     {% else %}
         <p>No photo available.</p>
