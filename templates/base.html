@@ -5,38 +5,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>User authenticate</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <link rel="icon" href="{% static 'images/favicon.png' %}">
+{#    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">#}
+    <link rel="icon" href="{% static 'images/drinks.png' %}">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body class="container">
-<ul class="list-group">
-    <li class="list-group-item">
-        USER: {{ user }}
-    </li>
-    <li class="list-group-item">
-        <a href="{% url 'home' %}">Home</a>
-    </li>
-</ul>
-
-{#<h1>Welcome to our WiKiFood! </h1>#}
-{#<ul>#}
-{#    <li><a href="/">Main</a></li>#}
-{#    {% if user.is_authenticated %}#}
-{#   <li>Welcome, {{ user.username|title }}! (<a href="{% url 'logout' %}">logout</a>)</li>#}
-{##}
-{#    {% else %}#}
-{#    <li><a href="{% url 'register' %}">Login/Register</a></li>#}
-{#    {% endif %}#}
+    
+    <div class="top ">
+        <nav class="header container">
+            {{ user }}           
+            <a class="logo_drink" href="{% url 'home' %}"><img class="logo_drink" src="{% static 'images/ico_home.png' %}" alt="logo0"></a>
+        </nav>        
+    </div>
 
 
-{# +   <li><a href="{% url 'get_receipt' %}">Search for recipe </a></li>#}
-{# +    <li><a href="{% url 'all_receipt' %}">Get all food recipes</a></li>#}
-{# +    <li><a href="{% url 'create_category' %}">Create new category</a></li>#}
-{# +    <li><a href="{% url 'add_receipt' %}">Add food recipe</a></li>#}
-{#</ul>#}
-
-{% block content %}
-{% endblock %}
-<script src="{% static "js/bootstrap.bundle.js" %}"></script>
+    {% block content %}
+    {% endblock %}
+    <script src="{% static "js/bootstrap.bundle.js" %}"></script>
 </body>
 </html>
