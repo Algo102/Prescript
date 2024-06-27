@@ -5,6 +5,7 @@
         <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
         <button type="submit">Log out</button>  
+        <hr>
         <a href="{% url 'main' %}">Receipt</a> 
     {% else %}
     	<a href="{% url 'login' %}">Login</a> | 

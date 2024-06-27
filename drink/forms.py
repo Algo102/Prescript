@@ -4,17 +4,9 @@ from django import forms
 # from django.utils.translation import gettext_lazy as _
 # from django.contrib.auth.forms import AuthenticationForm
 # from django.contrib.auth.models import User
-# from .models import Receipt, Category
-from .models import Category
+from .models import Category, Receipt
 
 
-# class ReceiptForm(forms.ModelForm):
-#     class Meta:
-#         model = Receipt
-#         fields = ['name', 'category', 'description', 'steps', 'time', 'photo']
-#
-#
-#
 class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
@@ -26,7 +18,13 @@ class CategoryForm(forms.ModelForm):
         if Category.objects.filter(name__iexact=name_lower).exists():
             raise forms.ValidationError("This category name already exists.")
         return name
-#
-#
-# class RecipeSearchForm(forms.Form):
-#     search_query = forms.CharField(label='Search', max_length=100)
+
+
+class ReceiptForm(forms.ModelForm):
+    class Meta:
+        model = Receipt
+        fields = ['name', 'category', 'description', 'steps', 'time', 'photo']
+
+
+class RecipeSearchForm(forms.Form):
+    search_query = forms.CharField(label='Search', max_length=100)
