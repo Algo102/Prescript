@@ -1,5 +1,7 @@
 from django.urls import path, include
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 # from users.views import Register
 
@@ -13,7 +15,9 @@ urlpatterns = [
     path('receipt_detail/<int:receipt_id>/', views.receipt_detail, name='receipt_detail'),
     path('modify_receipt/<int:receipt_id>/', views.modify_receipt, name='modify_receipt'),
 ]
-
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # from django.conf import settings
 # from django.conf.urls.static import static

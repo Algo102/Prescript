@@ -16,7 +16,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -130,12 +130,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATIC_ROOT = BASE_DIR / 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# STATIC_ROOT = BASE_DIR / 'static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 # MEDIA_URL = 'media/'
 # MEDIA_ROOT = BASE_DIR / 'media/'
 
@@ -164,7 +165,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #         },
 #         'file': {
 #             'class': 'logging.FileHandler',
-#             'filename': '/home/6545158/django_final/final/log/django.log',
+#             'filename': '/log/django.log',
 #             'formatter': 'verbose',
 #         },
 #     },
@@ -175,10 +176,46 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #             'propagate': True,
 #         },
 #
-#         'food': {
+#         'drink': {
 #             'handlers': ['console', 'file'],
 #             'level': 'DEBUG',
 #             'propagate': True,
 #         },
 #     },
 # }
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process} {thread} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': './log/django.log',
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+        },
+        'drink': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}

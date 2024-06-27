@@ -5,14 +5,14 @@ from .forms import CategoryForm, ReceiptForm, RecipeSearchForm
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Receipt
 
-# import logging
-#
-# logger = logging.getLogger(__name__)
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def main(request):
     recent_receipts = Receipt.objects.all().order_by('-id')[:5]
-    # logger.info('Main page accessed')
+    logger.info('Main page accessed')
     return render(request, "drink/main.html", {'recent_receipts': recent_receipts})
 
 
@@ -21,7 +21,7 @@ def create_category(request):
         form = CategoryForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            # logger.info('new category created')
+            logger.info('new category created')
             return redirect('main')
     else:
         form = CategoryForm()
@@ -35,7 +35,7 @@ def add_receipt(request):
             receipt = form.save(commit=False)
             receipt.author = request.user
             receipt.save()
-            # logger.info(f'Added receipt by {receipt.author}')
+            logger.info(f'Added receipt by {receipt.author}')
             return redirect('main')
     else:
         form = ReceiptForm()
@@ -72,7 +72,7 @@ def modify_receipt(request, receipt_id):
         form = ReceiptForm(request.POST, request.FILES, instance=receipt)
         if form.is_valid():
             form.save()
-            # logger.info('receipt updated successfully')
+            logger.info('receipt updated successfully')
             return redirect('receipt_detail', receipt_id=receipt.id)
     else:
         form = ReceiptForm(instance=receipt)
