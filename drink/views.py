@@ -28,38 +28,7 @@ def create_category(request):
     return render(request, 'drink/create_category.html', {'form': form})
 #
 #
-# def authorization(request):
-#     if request.method == 'POST':
-#         login_form = LoginForm(request, request.POST)
-#         if login_form.is_valid():
-#             user = login_form.get_user()
-#             login(request, user)
-#             # logger.info(f'New login {user.username}')
-#             return redirect('main')
-#     else:
-#         login_form = LoginForm()
-#
-#     return render(request, 'drink/authorization.html', {'login_form': login_form})
-#
-#
-# def register(request):
-#     if request.method == 'POST':
-#         register_form = RegistrationForm(request.POST)
-#         if register_form.is_valid():
-#             user = register_form.save()
-#             login(request, user)
-#             logger.info('New registration')
-#             return redirect('main')
-#     else:
-#         register_form = RegistrationForm()
-#
-#     return render(request, 'food/register.html', {'register_form': register_form})
-#
-#
-# def user_logout(request):
-#     logout(request)
-#     logger.info('logout')
-#     return redirect('main')
+
 #
 #
 # def add_receipt(request):
@@ -112,5 +81,36 @@ def create_category(request):
 #     receipt = get_object_or_404(Receipt, pk=receipt_id)
 #     return render(request, 'food/receipt_detail.html', {'receipt': receipt})
 #
+# def authorization(request):
+#     if request.method == 'POST':
+#         login_form = LoginForm(request, request.POST)
+#         if login_form.is_valid():
+#             user = login_form.get_user()
+#             login(request, user)
+#             # logger.info(f'New login {user.username}')
+#             return redirect('main')
+#     else:
+#         login_form = LoginForm()
 #
+#     return render(request, 'drink/authorization.html', {'login_form': login_form})
+#
+#
+# def register(request):
+#     if request.method == 'POST':
+#         register_form = RegistrationForm(request.POST)
+#         if register_form.is_valid():
+#             user = register_form.save()
+#             login(request, user)
+#             logger.info('New registration')
+#             return redirect('main')
+#     else:
+#         register_form = RegistrationForm()
+#
+#     return render(request, 'food/register.html', {'register_form': register_form})
+#
+#
+# def user_logout(request):
+#     logout(request)
+#     logger.info('logout')
+#     return redirect('main')
 
