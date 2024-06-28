@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-{% block title %}List of all recipes{% endblock %}
+{% block title %}All recipes{% endblock %}
 {% block content %}
-<h1>All recipes in our food WiKi</h1>
+<h1>Все рецепты напитков на нашем сайте</h1>
 <ul>
     {% for recipe in recipes %}
     <li><a href="{% url 'receipt_detail' receipt_id=recipe.pk %}">{{ recipe.name }}</a></li>
     {% empty %}
-    <li>No recipes currently.</li>
+    <li>Пока рецептов нет</li>
     {% endfor %}
 </ul>
 {% endblock %}

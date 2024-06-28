@@ -10,7 +10,8 @@ from .models import Category, Receipt
 class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
-        fields = ['name', 'description', 'photo']
+        # fields = ['name', 'description', 'photo']
+        fields = ['name', 'description']
 
     def clean_name(self):
         name = self.cleaned_data.get('name')
