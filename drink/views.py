@@ -1,7 +1,4 @@
-# from django.contrib.auth import login, logout
-# from .forms import RegistrationForm, LoginForm, ReceiptForm, CategoryForm, RecipeSearchForm
 from .forms import CategoryForm, ReceiptForm, RecipeSearchForm
-# from django.shortcuts import render, redirect, get_object_or_404
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Receipt
 
@@ -77,38 +74,3 @@ def modify_receipt(request, receipt_id):
     else:
         form = ReceiptForm(instance=receipt)
     return render(request, "drink/add_receipt.html", {'form': form})
-
-
-# def authorization(request):
-#     if request.method == 'POST':
-#         login_form = LoginForm(request, request.POST)
-#         if login_form.is_valid():
-#             user = login_form.get_user()
-#             login(request, user)
-#             # logger.info(f'New login {user.username}')
-#             return redirect('main')
-#     else:
-#         login_form = LoginForm()
-#
-#     return render(request, 'drink/authorization.html', {'login_form': login_form})
-#
-#
-# def register(request):
-#     if request.method == 'POST':
-#         register_form = RegistrationForm(request.POST)
-#         if register_form.is_valid():
-#             user = register_form.save()
-#             login(request, user)
-#             logger.info('New registration')
-#             return redirect('main')
-#     else:
-#         register_form = RegistrationForm()
-#
-#     return render(request, 'food/register.html', {'register_form': register_form})
-#
-#
-# def user_logout(request):
-#     logout(request)
-#     logger.info('logout')
-#     return redirect('main')
-

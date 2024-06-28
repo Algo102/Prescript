@@ -5,23 +5,60 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>User authenticate</title>
-{#    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">#}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="icon" href="{% static 'images/drinks.png' %}">
-    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+{#    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">#}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body class="container">
-    
-    <div class="top ">
-        <nav class="header container">
-            {{ user }}           
-            <a class="logo_drink" href="{% url 'home' %}"><img class="logo_drink" src="{% static 'images/ico_home.png' %}" alt="logo0"></a>
-        </nav>        
+
+<div class="top ">
+    <nav class="header container">
+        <div class="left_head">
+            {{ user }}
+            <a class="logo_drink" href="{% url 'home' %}"><img class="logo_drink"
+                                                               src="{% static 'images/ico_home.png' %}" alt="logo0"></a>
+        </div>
+        
+        <div>
+            {% if user.is_authenticated %}
+                <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <div class="btn_out">
+                    <button type="submit">Выйти</button>
+                    <hr>
+                    <a href="{% url 'get_receipt' %}">Найти рецепт</a>
+                </div>
+            {% else %}
+                <a class="a_color" href="{% url 'login' %}">Войти</a> |
+                <a class="a_color" href="{% url 'register' %}">Регистрация</a>
+            {% endif %} 
+        </div>
+    </nav>
+
+     <div>
+        {% if not user.is_authenticated %}
+            <p class="txt_log">Наслаждайтесь готовыми рецептами и делитесь своими (нужна регистрация)
+            
+        {% else %}
+            <div class="header_main">   
+                <ul class="head_main_ull">
+                    <li><a class="non_line" href="{% url 'create_category' %}">Создать новую категорию</a></li>
+                    <li><a class="non_line" href="{% url 'add_receipt' %}">Добавить новый рецепт</a></li>
+                    <li><a class="non_line" href="{% url 'all_receipt' %}">Посмотреть все рецепты</a></li>
+                    <li><a class="non_line" href="{% url 'main' %}">Детально</a></li>
+                </ul> 
+            </div> 
+            
+        {% endif %}
     </div>
 
 
     {% block content %}
     {% endblock %}
-    <script src="{% static "js/bootstrap.bundle.js" %}"></script>
+</div>
+
+
+<script src="{% static "js/bootstrap.bundle.js" %}"></script>
 </body>
 </html>

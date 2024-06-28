@@ -40,6 +40,10 @@ body {
   line-height: normal;
 }
 
+.txt_centr {
+  text-align: center;
+}
+
 .center {
   max-width: 1146px;
   margin: 0 auto;
@@ -57,25 +61,62 @@ body {
 }
 
 .header {
-  padding: 17px 0;
+  padding: 15px 0;
   border-radius: 10px;
   border: 1px solid #302e2e;
   background-color: #031a41;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-around;
   flex-direction: row;
   align-items: center;
   align-content: stretch;
   gap: 40px;
 }
 
+.header_main {
+  padding: 15px 0;
+  border-radius: 10px;
+  border: 1px solid #302e2e;
+  background-color: #031a41;
+  gap: 20px;
+
+}
+
+.head_main_ull {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 0;
+  list-style-type: none;
+
+}
+
+.non_line {
+  text-decoration: none;
+}
+
+
 .header__link {
   color: #FFF;
 }
 
+.left_head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+}
+
 .big:hover {
   color: rgb(154, 214, 240);
+}
+
+.a_color {
+  color: rgb(58 193 245);
+}
+
+a {
+  color: rgb(58 193 245);
 }
 
 a .logo_drink {
@@ -84,6 +125,16 @@ a .logo_drink {
     /*background-color: transparent;*/
 }
 
+.txt_log {
+  font-size: 13px;
+  color: #e83e8c;
+  text-align: right;
+}
+
+.btn_out {
+  display: flex;
+  flex-direction: column;
+}
 
 .main__info {
   padding: 160px 0 197px 0;
@@ -164,14 +215,7 @@ a .logo_drink {
   margin-right: 10px;
 }
 
-.main__img {
-  height: 415px;
-  width: 415px;
-  background-image: url(../img/main.svg);
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
+
 
 .logo {
   display: flex;
@@ -198,14 +242,7 @@ a .logo_drink {
   margin: 157px auto 264px auto;
 }
 
-.md_info_img {
-  width: 594px;
-  height: 548px;
-  background-image: url(../img/info.png);
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
+
 
 .md_info_right {
   padding: 117px 0;
@@ -343,14 +380,7 @@ a .logo_drink {
   margin-top: 20px;
 }
 
-.end_right {
-  width: 573px;
-  height: 492px;
-  background-image: url(../img/end.svg);
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
+
 
 .footer {
   background-color: #070F1D;
@@ -446,14 +476,7 @@ a .logo_drink {
   line-height: 19px;
 }
 
-.foot_second p {
-  font-family: "Roboto-Italic";
-  font-size: 14px;
-  font-weight: 250;
-  line-height: 16px;
-  opacity: 0.6;
-  max-width: 261px;
-}
+
 
 .foot_third {
   width: 362px;
@@ -564,17 +587,10 @@ a .logo_drink {
   }
 
 
-
   .main {
     /* padding-left: 64px; */
   }
-
-
 }
-
-
-
-
 
 /*---для мобилок---*/
 @media (max-width: 767px) {
@@ -593,11 +609,6 @@ a .logo_drink {
   .header {
     padding: 22px 0;
     gap: 16px;
-  }
-
-  .main__info__title {
-    font-size: 28px;
-    font-weight: 62px;
   }
 
   .main__info__name {
@@ -623,110 +634,4 @@ a .logo_drink {
   .main-content-btn {
     justify-content: center;
   }
-
-  .logo {
-    padding: 0 0 108px 0;
-  }
-
-  .mid_info {
-    justify-content: center;
-    gap: 68px;
-    margin: 96px auto;
-  }
-
-  .md_info_right {
-    padding: 0;
-    text-align: center;
-  }
-
-  .md_info_right h2 {
-    font-size: 24px;
-  }
-
-  .cardlist {
-    grid-template-columns: repeat(1, minmax(30%, 362px));
-    justify-content: center;
-    gap: 32px;
-  }
-
-  .card {
-    padding: 10px;
-    background-color: #0F1724;
-  }
-
-  .card h3 {
-    font-size: 18px;
-    line-height: 125%;
-    font-weight: 700;
-  }
-
-  .card p {
-    font-size: 10px;
-    line-height: 160%;
-    font-weight: normal;
-  }
-
-  .big_card {
-    display: none;
-  }
-
-  .end {
-
-    gap: 32px;
-    /* flex-direction: column; */
-    margin-bottom: 96px;
-
-  }
-
-  .end_left_cont {
-    margin: 0;
-  }
-
-  .end_left_cont h2 {
-    font-size: 24px;
-    padding: 0;
-  }
-
-  .foot_content {
-    gap: 30px;
-    padding: 113px 17px 64px 17px;
-  }
-
-  .foot_first {
-    order: 1;
-  }
-
-  .foot_first h4 {
-    text-align: center;
-  }
-
-  .foot_second {
-    order: 0;
-  }
-
-  .foot_second h4 {
-    text-align: center;
-  }
-
-  .foot_third {
-    order: 3;
-  }
-
-  .foot_third h4 {
-    text-align: center;
-  }
-
-  .foot_third p {
-    text-align: center;
-  }
-
-  .reds {
-    justify-content: center;
-  }
-
-
-
-
-
-
 }
