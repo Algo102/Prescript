@@ -3,7 +3,7 @@
 {% block content %}
 
     
-<h2>Recent recipes:</h2>
+<h2>Последние рецепты:</h2>
     <ul>
         {% for receipt in recent_receipts %}
         <li><a href="{% url 'receipt_detail' receipt.pk %}">{{ receipt.name }}</a> - {{ receipt.time }} minutes</li>
